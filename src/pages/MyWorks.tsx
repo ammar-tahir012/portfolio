@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { config } from "../config";
 import "./MyWorks.css";
 import { useEffect } from "react";
-import { MdArrowBack, MdArrowOutward } from "react-icons/md";
+import { MdArrowOutward } from "react-icons/md";
 
 const MyWorks = () => {
   const location = useLocation();
