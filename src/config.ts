@@ -45,9 +45,9 @@ export const config = {
     projects: [
         {
             id: 1,
-            title: "MuteMate",
+            title: "MuteMate — AI-Powered Sign Language Learning App",
             category: "AI / Mobile",
-            technologies: "Flutter, TensorFlow Lite, MediaPipe, Firebase, Supabase, OpenAI GPT-4, Python",
+            technologies: "Flutter, Dart, TensorFlow Lite, MediaPipe, Firebase, Supabase, OpenAI GPT-4, Python, Google Cloud APIs",
             image: "/images/MuteMatePics/landing.jpeg",
             images: [
                 "/images/MuteMatePics/landing.jpeg",
@@ -59,16 +59,16 @@ export const config = {
                 "/images/MuteMatePics/shop.jpeg",
                 "/images/MuteMatePics/celestial.jpeg"
             ],
-            description: "An intelligent, gamified mobile platform helping deaf and mute children learn sign language through AI-assisted 3D animated lessons, gesture recognition, and interactive games.",
-            link: "https://github.com/ammar-tahir012/MuteMate",
-            github: "https://github.com/ammar-tahir012/MuteMate",
+            description: "Type: Mobile Platform / Final Year Project\nTarget Audience: Non-verbal/deaf children (ages 5–12) and their parents/educators\n\nCore Technical Architecture:\n• On-Device Computer Vision: Integrated TensorFlow Lite and MediaPipe pipelines to track real-time 3D hand landmarks and classify complex gestures locally with near-zero latency.\n• Bidirectional Speech/Sign Pipeline: Engineered a two-way translation system utilizing Google Cloud Speech-to-Text and custom avatar keyframing for Sign-to-Speech & Speech-to-Sign translation.\n• Contextual Parent AI: Integrated an OpenAI GPT-4 powered assistant (SignBuddy) to generate real-time feedback, contextual signing tips, and progress tracking.\n• Gamification Engine: Managed user progression, unlockable 3D avatar cosmetics, badges, and real-time accuracy scoring using Firebase and Supabase.",
+            link: "https://github.com/Ijlal-khann/MuteMate",
+            github: "https://github.com/Ijlal-khann/MuteMate",
             live: ""
         },
         {
             id: 2,
-            title: "FORTVA",
+            title: "FORTVA — Unified Contract & Document Lifecycle System",
             category: "Web Platform",
-            technologies: "React.js, Supabase, Tailwind CSS, TypeScript, Vite, AWS S3, Calendly, DocuSign, Paystack",
+            technologies: "React.js, TypeScript, Vite, Supabase, Tailwind CSS, AWS S3, DocuSign, Paystack, Calendly",
             image: "/images/fortva.png",
             images: [
                 "/images/fortva.png",
@@ -77,16 +77,34 @@ export const config = {
                 "/images/fortvaPics/for4.png",
                 "/images/fortvaPics/for5.png"
             ],
-            description: "A real-world enterprise-grade platform designed to centralize and streamline the management of legal contracts, featuring status-tracking pipelines, multi-file uploads to AWS S3, and DocuSign integration.",
-            link: "https://github.com/ammar-tahir012/FORTVA",
-            github: "https://github.com/ammar-tahir012/FORTVA",
+            description: "Type: Real-World Business Platform\n\nCore Technical Architecture:\n• Document State Engine: Engineered a status-tracking pipeline (Draft ➔ Pending ➔ Signed ➔ Archived) featuring dynamic deadline triggers and automated notifications.\n• Third-Party Integrations: Integrated DocuSign API for legally binding e-signatures, Calendly for consultation booking, and Paystack for automated retainer payments.\n• File Stream Hooks: Created custom React hooks to manage multi-file stream uploads to AWS S3 with client-side drag-and-drop validation.",
+            link: "https://github.com/AsharFiaz/fortva",
+            github: "https://github.com/AsharFiaz/fortva",
             live: ""
         },
         {
             id: 3,
-            title: "French Arabians Perfume Store",
+            title: "Behavioral Health OS — Clinician Workspace & Analytics Engine",
+            category: "HIPAA-Compliant Healthcare Platform",
+            technologies: "React.js, Supabase, Ant Design, Tailwind CSS, Vite, RESTful APIs",
+            image: "/images/health-os.png",
+            images: [
+                "/images/health-os.png",
+                "/images/bhoas_pics/second_bhoas.png",
+                "/images/bhoas_pics/third_bhoas.png",
+                "/images/bhoas_pics/fifth_bhoas.png",
+                "/images/bhoas_pics/sixth_bhoas.png"
+            ],
+            description: "Type: HIPAA-Compliant Healthcare Platform\n\nCore Technical Architecture:\n• Multi-Screen Clinical Portal: Designed a 12-screen workspace for clinician workflows, patient chart management, billing, and remote telehealth coordination.\n• KPI & Scoring Engine: Built an analytics dashboard that processes clinical metric inputs against business goals to generate automated scale ratings (Pass / Watch / Fail).\n• Design System Integration: Combined Ant Design and Tailwind CSS to build an accessible, data-dense UI.",
+            link: "https://github.com/ammar-tahir012/behavorial_health_os",
+            github: "https://github.com/ammar-tahir012/behavorial_health_os",
+            live: "https://behavorialhealthos.netlify.app"
+        },
+        {
+            id: 4,
+            title: "French Arabians — Full-Stack Perfume E-Commerce Engine",
             category: "E-Commerce",
-            technologies: "React.js, Node.js, Express.js, MongoDB, Cloudinary, Redis, Tailwind CSS",
+            technologies: "React.js, Node.js, Express.js, MongoDB, Redis, Cloudinary, Tailwind CSS",
             image: "/images/frenchArabiansPic/Picture4.jpg",
             images: [
                 "/images/frenchArabiansPic/Picture4.jpg",
@@ -94,14 +112,49 @@ export const config = {
                 "/images/frenchArabiansPic/Picture2.jpg",
                 "/images/frenchArabiansPic/Picture5.jpg"
             ],
-            description: "A fully functional e-commerce platform built for a perfume brand featuring secure authentication, shopping cart management, Redis caching, and Cloudinary storage.",
+            description: "Type: Production E-Commerce Web App\n\nCore Technical Architecture:\n• Caching & Performance: Implemented a Redis key-value caching layer in front of MongoDB queries, drastically lowering product fetching latency during high traffic.\n• Media Pipeline & Auth: Handled asset storage via Cloudinary and implemented secure JSON Web Token (JWT) authentication with session handling.\n• Interactive Checkout UX: Built dynamic state carts, transactional email triggers, and real-time user notification queues.",
             link: "https://github.com/ammar-tahir012/french-arabians",
             github: "https://github.com/ammar-tahir012/french-arabians",
             live: ""
         },
         {
-            id: 4,
-            title: "Schedly",
+            id: 5,
+            title: "DriveVibes — Virtual City Driving & Radio Experience",
+            category: "Web Application",
+            technologies: "React.js, Tailwind CSS, REST APIs, Vercel",
+            image: "/images/drivevibes.png",
+            images: [
+                "/images/drivevibes.png",
+                "/images/driveVibePics/drive1.png",
+                "/images/driveVibePics/drive3.png",
+                "/images/driveVibePics/drive4.png",
+                "/images/driveVibePics/drive5.png"
+            ],
+            description: "Type: Interactive Web Application\n\nCore Technical Architecture:\n• Multi-API Synchronization: Integrated 4 separate APIs (YouTube Data API v3, Radio Browser API, GeoDB Cities API) to dynamically pair 4K driving POV streams with real-time local radio channels across 190+ countries.\n• Ad-Free Invidious System: Built a custom streaming pipeline using Invidious video instances with dynamic fallback to prevent broken video embeds.\n• Glassmorphism UI: Applied debounced autocomplete search algorithms and glassmorphism UI overlay components.",
+            link: "https://github.com/ammar-tahir012/drive-vibe",
+            github: "https://github.com/ammar-tahir012/drive-vibe",
+            live: "https://drive-vibe.vercel.app/"
+        },
+        {
+            id: 6,
+            title: "PES Global Group — Corporate SSR Web Platform",
+            category: "Enterprise Marketing Website",
+            technologies: "Next.js, React.js, Tailwind CSS, Framer Motion",
+            image: "/images/PesGlobalPics/pic1.jpeg",
+            images: [
+                "/images/PesGlobalPics/pic1.jpeg",
+                "/images/PesGlobalPics/pic2.jpeg",
+                "/images/PesGlobalPics/pic3.jpeg",
+                "/images/PesGlobalPics/pic4.jpeg"
+            ],
+            description: "Type: Enterprise Marketing Website\n\nCore Technical Architecture:\n• SEO & SSR Optimization: Built utilizing Next.js Server-Side Rendering (SSR) to achieve high lighthouse performance scores and optimal SEO indexability.\n• Animations: Integrated Framer Motion for smooth page-scroll transitions and interactive section highlights.",
+            link: "https://github.com/ammar-tahir012/pesglobal",
+            github: "https://github.com/ammar-tahir012/pesglobal",
+            live: "https://pesglobalgroup.com"
+        },
+        {
+            id: 7,
+            title: "Schedly — Full-Stack Appointment Scheduling Platform",
             category: "Web App",
             technologies: "Node.js, Express.js, React.js, MongoDB, Mongoose, JWT, RESTful APIs",
             image: "/images/schedly.png",
@@ -112,62 +165,9 @@ export const config = {
                 "/images/schedlyPics/adminavalaibilyy.png",
                 "/images/schedlyPics/mnagead.png"
             ],
-            description: "A full-stack appointment booking platform tailored for service-based businesses, featuring distinct panels for customers and owners, JWT auth, and appointment lifecycle tracking.",
+            description: "Type: Production Client Platform / Web App\n\nCore Technical Architecture:\n• Multi-Role Portal: Designed separate responsive client-facing schedules and administrative booking boards with JWT authentication.\n• Appointment Lifecycle Engine: Built state transition pipeline for bookings (Scheduled ➔ Confirmed ➔ Rescheduled ➔ Cancelled) with transactional email alerts.\n• MERN Database Architecture: Developed flexible Mongoose schemas with indexed date slots to prevent double-booking.",
             link: "https://github.com/ammar-tahir012/Schedly-appointmentBooking",
             github: "https://github.com/ammar-tahir012/Schedly-appointmentBooking",
-            live: ""
-        },
-        {
-            id: 5,
-            title: "PES Global Group",
-            category: "Frontend / SEO",
-            technologies: "React.js, Next.js, Tailwind CSS, Framer Motion, SSR",
-            image: "/images/PesGlobalPics/pic1.jpeg",
-            images: [
-                "/images/PesGlobalPics/pic1.jpeg",
-                "/images/PesGlobalPics/pic2.jpeg",
-                "/images/PesGlobalPics/pic3.jpeg",
-                "/images/PesGlobalPics/pic4.jpeg"
-            ],
-            description: "A high-performance corporate website developed for a global multidisciplinary engineering group utilizing SSR for superior SEO and Framer Motion for smooth transitions.",
-            link: "https://pes-global-group.vercel.app",
-            github: "https://github.com/ammar-tahir012",
-            live: "https://pes-global-group.vercel.app"
-        },
-        {
-            id: 6,
-            title: "Behavioral Health OS",
-            category: "Full Stack",
-            technologies: "React.js, Supabase, Tailwind CSS, Ant Design, Vite, RESTful APIs",
-            image: "/images/health-os.png",
-            images: [
-                "/images/health-os.png",
-                "/images/bhoas_pics/second_bhoas.png",
-                "/images/bhoas_pics/third_bhoas.png",
-                "/images/bhoas_pics/fifth_bhoas.png",
-                "/images/bhoas_pics/sixth_bhoas.png"
-            ],
-            description: "A HIPAA-compliant healthcare platform built as a dual-application system containing a clinician dashboard for patient management and a public-facing marketing funnel.",
-            link: "https://github.com/ammar-tahir012/Behavioral-Health-OS",
-            github: "https://github.com/ammar-tahir012/Behavioral-Health-OS",
-            live: ""
-        },
-        {
-            id: 7,
-            title: "DriveVibes",
-            category: "Web App",
-            technologies: "React.js, Tailwind CSS, YouTube Data API v3, Radio Browser API, GeoDB Cities API",
-            image: "/images/drivevibes.png",
-            images: [
-                "/images/drivevibes.png",
-                "/images/driveVibePics/drive1.png",
-                "/images/driveVibePics/drive3.png",
-                "/images/driveVibePics/drive4.png",
-                "/images/driveVibePics/drive5.png"
-            ],
-            description: "A creative virtual travel web application letting users watch driving POV videos while listening to live local radio across 190+ countries with an ad-free Invidious video system.",
-            link: "https://github.com/ammar-tahir012/drive-vibe",
-            github: "https://github.com/ammar-tahir012/drive-vibe",
             live: ""
         }
     ],
@@ -210,5 +210,3 @@ export const config = {
         }
     ]
 };
-
-

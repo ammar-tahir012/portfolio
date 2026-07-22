@@ -60,6 +60,14 @@ const Work = () => {
       ScrollTrigger.getById("work")?.kill();
     };
   }, []);
+  const splitTitle = (title: string) => {
+    const parts = title.split(" — ");
+    if (parts.length > 1) {
+      return { heading: parts[0], subtitle: parts[1] };
+    }
+    return { heading: title, subtitle: "" };
+  };
+
   return (
     <div className="work-section" id="work">
       <div className="work-container section-container">
@@ -74,43 +82,25 @@ const Work = () => {
                 <div className="work-title">
                   <h3>0{index + 1}</h3>
                   <div>
-                    <h4>{project.title}</h4>
-                    <p>{project.category}</p>
+                    <h4>{splitTitle(project.title).heading}</h4>
+                    <p className="work-desc-light">{splitTitle(project.title).subtitle}</p>
                   </div>
                 </div>
-                <h4>Tools and features</h4>
+                <div className="work-tools-header">
+                  <h4>Tools and features</h4>
+                  <Link
+                    to={`/myworks#project-${project.id}`}
+                    className="work-btn work-btn-visit slim-btn"
+                    data-cursor="disable"
+                  >
+                    See Details <MdArrowOutward />
+                  </Link>
+                </div>
                 <p className="work-tech">{project.technologies}</p>
               </div>
 
               {/* 2. Project Screenshot Image */}
               <WorkImage image={project.image} alt={project.title} />
-
-              {/* 3. Brief Description & Action Buttons */}
-              <div className="work-footer">
-                <p className="work-desc">{project.description}</p>
-                <div className="work-buttons">
-                  <a
-                    href={project.github || project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="work-btn work-btn-github"
-                    data-cursor="disable"
-                  >
-                    GitHub Repo <MdArrowOutward />
-                  </a>
-                  {project.live ? (
-                    <a
-                      href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="work-btn work-btn-visit"
-                      data-cursor="disable"
-                    >
-                      Visit Website <MdArrowOutward />
-                    </a>
-                  ) : null}
-                </div>
-              </div>
             </div>
           ))}
           {/* See All Works Button */}

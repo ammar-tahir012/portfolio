@@ -1,80 +1,187 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { config } from "../config";
 import "./MyWorks.css";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { MdArrowBack, MdArrowOutward } from "react-icons/md";
 
 const MyWorks = () => {
-  // Store current image index for hovered cards
-  const [hoveredCardId, setHoveredCardId] = useState<number | null>(null);
-  const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
+  const location = useLocation();
 
+  // Scroll to anchor on path change (e.g. /myworks#project-2)
   useEffect(() => {
-    if (hoveredCardId === null) return;
-    const project = config.projects.find((p) => p.id === hoveredCardId);
-    if (!project || !project.images || project.images.length <= 1) return;
+    const hash = location.hash;
+    if (hash) {
+      // Small timeout to ensure DOM is fully loaded and settled
+      const timer = setTimeout(() => {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 300);
+      return () => clearTimeout(timer);
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [location]);
 
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % project.images!.length);
-    }, 1200); // Cycle images every 1.2s on hover
+  const renderFormattedDescription = (text: string) => {
+    return text.split("\n").map((line, index) => {
+      const trimmed = line.trim();
+      if (!trimmed) return <div key={index} style={{ height: "12px" }}></div>;
 
-    return () => clearInterval(interval);
-  }, [hoveredCardId]);
+      if (trimmed.startsWith("• ")) {
+        // Bullet point: • Title: Details
+        const content = trimmed.substring(2);
+        const colonIndex = content.indexOf(":");
+        if (colonIndex !== -1) {
+          const label = content.substring(0, colonIndex + 1);
+          const details = content.substring(colonIndex + 1);
+          return (
+            <div key={index} className="myworks-bullet-line">
+              <span className="bullet-dot">•</span> <strong>{label}</strong>{details}
+            </div>
+          );
+        }
+        return (
+          <div key={index} className="myworks-bullet-line">
+            <span className="bullet-dot">•</span> {content}
+          </div>
+        );
+      }
 
-  const handleMouseEnter = (id: number) => {
-    setHoveredCardId(id);
-    setCurrentImageIndex(0);
-  };
+      // Key-value lines: Type: ...
+      const colonIndex = trimmed.indexOf(":");
+      if (colonIndex !== -1 && colonIndex < 35) {
+        const label = trimmed.substring(0, colonIndex + 1);
+        const value = trimmed.substring(colonIndex + 1);
+        
+        // If it is just a section heading like "Core Technical Architecture:"
+        if (!value.trim()) {
+          return (
+            <h4 key={index} className="myworks-desc-section-heading">
+              {label}
+            </h4>
+          );
+        }
 
-  const handleMouseLeave = () => {
-    setHoveredCardId(null);
-    setCurrentImageIndex(0);
+        return (
+          <div key={index} className="myworks-desc-line">
+            <strong>{label}</strong>{value}
+          </div>
+        );
+      }
+
+      return <p key={index} className="myworks-desc-line">{trimmed}</p>;
+    });
   };
 
   return (
     <div className="myworks-page">
-      <div className="myworks-header">
-        <a href="/#work" className="back-button" data-cursor="disable">
-          ← Back to Home
-        </a>
-        <h1>
-          All <span>Works</span>
-        </h1>
-        <p>A collection of all my projects and creations</p>
-      </div>
+      {/* Background ambient lighting */}
+      <div className="myworks-bg-glow-1"></div>
+      <div className="myworks-bg-glow-2"></div>
 
-      <div className="myworks-grid">
-        {config.projects.map((project, index) => {
-          const isHovered = hoveredCardId === project.id;
-          const displayImage =
-            isHovered && project.images && project.images.length > 0
-              ? project.images[currentImageIndex]
-              : project.image;
+      <div className="myworks-container">
+        {/* Page Header */}
+        <div className="myworks-header">
+          <Link to="/" className="back-button" data-cursor="disable">
+            ← Back to Home
+          </Link>
+          <h1>
+            All <span>Works</span>
+          </h1>
+          <p>Explore full descriptions, architecture details, and screenshots of my projects</p>
+        </div>
 
-          return (
-            <a 
-              href={project.link} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="myworks-card" 
-              key={project.id} 
-              data-cursor="disable"
-              onMouseEnter={() => handleMouseEnter(project.id)}
-              onMouseLeave={handleMouseLeave}
-              style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}
-            >
-              <div className="myworks-card-number">0{index + 1}</div>
-              <div className="myworks-card-image">
-                <img src={displayImage} alt={project.title} />
-              </div>
-              <div className="myworks-card-info">
-                <h3>{project.title}</h3>
-                <p className="myworks-card-category">{project.category}</p>
-                <p className="myworks-card-description">{project.description}</p>
-                <p className="myworks-card-tech">{project.technologies}</p>
-              </div>
-            </a>
-          );
-        })}
+        {/* Detailed Sections List */}
+        <div className="myworks-sections-list">
+          {config.projects.map((project, index) => {
+            const images = project.images && project.images.length > 0 ? project.images : [project.image];
+            const techList = project.technologies.split(",").map((tech) => tech.trim());
+
+            return (
+              <section 
+                key={project.id} 
+                id={`project-${project.id}`} 
+                className="myworks-project-section"
+              >
+                {/* Project Header Info */}
+                <div className="myworks-project-header">
+                  <div className="myworks-project-index">0{index + 1}</div>
+                  <div className="myworks-project-title-area">
+                    <h2>{project.title}</h2>
+                    <p className="myworks-project-category">{project.category}</p>
+                  </div>
+                </div>
+
+                {/* Screenshot Gallery Slider (Horizontal Scroll) */}
+                <div className="myworks-project-gallery">
+                  {images.map((img, idx) => (
+                    <div key={idx} className="myworks-gallery-image-wrapper">
+                      <img 
+                        src={img} 
+                        alt={`${project.title} screenshot ${idx + 1}`} 
+                        className="myworks-gallery-image"
+                        loading="lazy"
+                      />
+                    </div>
+                  ))}
+                </div>
+
+                {/* Project Details Grid */}
+                <div className="myworks-project-details-grid">
+                  {/* Left Box: Full Description & Architecture */}
+                  <div className="myworks-details-text-box">
+                    <h3>Technical Architecture & Description</h3>
+                    <div className="myworks-project-desc">
+                      {renderFormattedDescription(project.description)}
+                    </div>
+                  </div>
+
+                  {/* Right Box: Tech Stack Tags & Actions */}
+                  <div className="myworks-details-tags-box">
+                    <h3>Technologies Used</h3>
+                    <div className="myworks-tech-tags">
+                      {techList.map((tech, idx) => (
+                        <span key={idx} className="myworks-tech-tag">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="myworks-project-links">
+                      <a
+                        href={project.github || project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="myworks-link-btn myworks-github-btn"
+                        data-cursor="disable"
+                      >
+                        GitHub Repository <MdArrowOutward />
+                      </a>
+                      {project.live ? (
+                        <a
+                          href={project.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="myworks-link-btn myworks-live-btn"
+                          data-cursor="disable"
+                        >
+                          Visit Live Site <MdArrowOutward />
+                        </a>
+                      ) : null}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Section Separator */}
+                {index < config.projects.length - 1 && (
+                  <div className="myworks-section-divider"></div>
+                )}
+              </section>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
