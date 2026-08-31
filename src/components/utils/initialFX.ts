@@ -77,8 +77,10 @@ export function initialFX() {
   var landingText4 = new TextSplitter(".landing-h2-1", TextProps);
   var landingText5 = new TextSplitter(".landing-h2-2", TextProps);
 
-  LoopText(landingText2, landingText3);
-  LoopText(landingText4, landingText5);
+  // Only loop a line when its alternate text is actually present in the DOM,
+  // otherwise the surviving line gets translated out of place with nothing to swap in.
+  if (landingText3.chars.length) LoopText(landingText2, landingText3);
+  if (landingText5.chars.length) LoopText(landingText4, landingText5);
 }
 
 function LoopText(Text1: TextSplitter, Text2: TextSplitter) {

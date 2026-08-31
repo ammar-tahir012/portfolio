@@ -119,6 +119,12 @@
     color: rgba(255, 255, 255, 0.9);
   }
 
+  .landing-h2-and {
+    display: block;
+    font-size: 16px;
+    margin-left: 0;
+  }
+
   .landing-info-h2::after {
     display: none;
   }
@@ -420,17 +426,19 @@ h2.landing-info-h2 {
   white-space: nowrap;
 }
 
-.landing-info-h2::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 120%;
-  z-index: 3;
-  background-image: linear-gradient(0deg,
-      var(--backgroundColor) 40%,
-      rgba(0, 0, 0, 0) 110%);
-  top: 0;
-  left: 0;
+.landing-h2-and {
+  align-self: baseline;
+  margin-left: 0.25em;
+  font-size: 0.45em;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: lowercase;
+  color: var(--accentColor);
+  white-space: nowrap;
+}
+
+.landing-info-h2+h2 {
+  margin-top: 0;
 }
 
 @media screen and (min-width: 500px) {

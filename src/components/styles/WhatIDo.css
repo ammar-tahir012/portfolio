@@ -1,32 +1,39 @@
 .whatIDO {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: stretch;
   justify-content: center;
-  place-items: center;
   position: relative;
   opacity: 1;
   height: auto;
   min-height: 100vh;
   padding: 120px 0;
   width: var(--cWidth);
-  max-width: 1920px;
+  max-width: 1500px;
   margin: auto;
+  /* Sits above the fixed 3D character so the cards are never hidden behind it,
+     while gaps stay click-through so the character stays interactive. */
+  z-index: 12;
+  pointer-events: none;
 }
 
 .what-box {
-  width: 50%;
+  width: 100%;
   display: flex;
   justify-content: center;
   position: relative;
 }
 
+.what-box:first-child {
+  justify-content: flex-start;
+}
+
 .what-box h2 {
-  font-size: calc(4vw + 25px);
-  line-height: calc(4vw + 20px);
+  font-size: clamp(40px, 4.5vw, 70px);
+  line-height: 1.05;
   font-weight: 600;
-  margin-right: 10%;
-  position: sticky;
-  top: 150px;
+  margin: 0 0 50px 0;
+  pointer-events: auto;
 }
 
 .hat-h2 {
@@ -38,39 +45,46 @@
 }
 
 .what-box-in {
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: flex-start;
   height: auto;
-  margin-left: 50px;
+  margin-left: 0;
   position: relative;
   display: flex;
   gap: 20px;
   width: 100%;
-  max-width: 550px;
+  max-width: none;
+  padding: 0 30px;
+  box-sizing: border-box;
 }
 
 .what-content {
-  width: 100%;
+  flex: 0 0 calc((100% - 40px) / 3);
+  width: auto;
   height: auto;
   min-height: auto;
   transition: 0.3s ease;
   position: relative;
   padding: 25px 30px;
   box-sizing: border-box;
-  background: rgba(11, 8, 12, 0.4);
+  background: rgba(11, 8, 12, 0.72);
+  backdrop-filter: blur(8px);
   border-radius: 6px;
+  pointer-events: auto;
 }
 
 .what-noTouch:hover,
 .what-content-active {
-  background: rgba(194, 164, 255, 0.06);
-  padding: 25px 30px;
+  background: rgba(34, 25, 42, 0.85);
+  transform: translateY(-4px);
 }
 
 .what-noTouch:hover~.what-content,
 .what-box-in:hover .what-noTouch:not(:hover),
 .what-content.what-sibling {
   opacity: 0.85;
-  padding: 25px 30px;
 }
 
 .what-content h3 {
@@ -213,9 +227,9 @@
 
 .what-border1 svg {
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 450px;
+  left: 0;
+  transform: none;
+  width: 100%;
 }
 
 .what-border2 {
@@ -233,9 +247,9 @@
 }
 
 .what-border2 svg {
-  height: 500px;
-  top: 50%;
-  transform: translateY(-50%);
+  height: 100%;
+  top: 0;
+  transform: none;
   position: absolute;
 }
 
@@ -280,57 +294,23 @@
   border-radius: 30px;
 }
 
-@media only screen and (max-width: 1600px) {
-  .what-box h2 {
-    margin-right: 18%;
-  }
-}
-
+/* Two per row once there is no longer room for three */
 @media only screen and (max-width: 1400px) {
-  .what-box h2 {
-    margin-right: 20%;
-  }
-
   .what-box-in {
     height: auto;
   }
 
-  .what-content h3 {
-    font-size: 28px;
-  }
-
   .what-content {
+    flex-basis: calc((100% - 20px) / 2);
     padding: 30px;
-    width: 400px;
   }
 
   .what-content p {
     font-size: 13px;
   }
 
-  .what-noTouch:hover,
-  .what-content-active {
-    padding: 20px 30px;
-  }
-
-  .what-noTouch:hover~.what-content,
-  .what-box-in:hover .what-noTouch:not(:hover),
-  .what-content.what-sibling {
-    padding: 10px 30px;
-  }
-
   .what-tags {
     font-size: 12px;
-  }
-}
-
-@media only screen and (max-width: 1400px) {
-  .what-box-in {
-    margin-left: 50px;
-  }
-
-  .what-content {
-    width: 380px;
   }
 }
 
@@ -343,27 +323,15 @@
 
   .what-box-in {
     height: auto;
-    margin-left: -50px;
+    margin-left: 0;
   }
 
   .what-content {
-    padding: 50px;
-    width: 500px;
+    padding: 30px;
   }
 
   .what-content p {
     font-size: 14px;
-  }
-
-  .what-noTouch:hover,
-  .what-content-active {
-    padding: 50px;
-  }
-
-  .what-noTouch:hover~.what-content,
-  .what-box-in:hover .what-noTouch:not(:hover),
-  .what-content.what-sibling {
-    padding: 10px 50px;
   }
 }
 
@@ -393,12 +361,14 @@
   }
 
   .what-content {
+    flex: 1 1 100%;
     width: 100%;
   }
 
   .what-box-in {
     margin-left: 0px;
     height: auto;
+    padding: 0;
   }
 
   .what-content h5,
@@ -457,7 +427,7 @@
 
 @media only screen and (min-width: 1950px) {
   .what-box h2 {
-    font-size: 7rem;
-    line-height: 6.8rem;
+    font-size: 80px;
+    line-height: 1.05;
   }
 }
