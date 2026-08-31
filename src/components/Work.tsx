@@ -74,7 +74,10 @@ const Work = () => {
         </h2>
         <div className="work-flex">
           {config.projects.map((project, index) => (
-            <div className="work-box" key={project.id}>
+            <div
+              className={`work-box${project.id === 1 ? " work-box-tall" : ""}`}
+              key={project.id}
+            >
               {/* 1. Header & Tools */}
               <div className="work-info">
                 <div className="work-title">

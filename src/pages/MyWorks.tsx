@@ -150,6 +150,7 @@ const MyWorks = () => {
                     </div>
 
                     <div className="myworks-project-links">
+                      {(project.github || project.link) ? (
                       <a
                         href={project.github || project.link}
                         target="_blank"
@@ -159,6 +160,7 @@ const MyWorks = () => {
                       >
                         GitHub Repository <MdArrowOutward />
                       </a>
+                      ) : null}
                       {project.live ? (
                         <a
                           href={project.live}

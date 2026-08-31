@@ -47,7 +47,7 @@
 
 /* MuteMate's screenshot is portrait and already fills the column height,
    so it keeps the original bottom-anchored spacing. */
-.work-flex .work-box:first-child {
+.work-flex .work-box-tall {
   justify-content: space-between;
 }
 

@@ -44,6 +44,44 @@ export const config = {
     ],
     projects: [
         {
+            id: 8,
+            title: "SignForge — Multi-Tenant E-Signature & Contract Platform",
+            category: "SaaS / E-Signature",
+            technologies: "Next.js 16, React 19, TypeScript, PostgreSQL (Neon), Prisma ORM v7, Tailwind CSS v4, pdf-lib, pdfjs-dist, Resend API, JWT, OGL",
+            image: "/images/signforge/landing.jpeg",
+            images: [
+                "/images/signforge/landing.jpeg",
+                "/images/signforge/dashboard.jpeg",
+                "/images/signforge/working.jpeg",
+                "/images/signforge/signn0n.jpeg",
+                "/images/signforge/email.jpeg"
+            ],
+            description: "Type: Standalone Multi-Tenant SaaS\n\nCore Technical Architecture:\n• Interactive PDF Designer: Built a drag-and-drop canvas with pdf-lib and pdfjs-dist for placing signature anchors, dates, names, and acknowledgment fields on multi-page PDFs, mapping viewport pixels to PDF units across device pixel ratios.\n• Client-Side Flattening: Programmatically embeds ink signatures, timestamps, and recipient audit metadata onto the PDF before committing the final copy to storage.\n• Multi-Tenant Auth: Implemented JWT sessions in HttpOnly cookies, bcrypt password hashing, Next.js Middleware route protection, and tenant-scoped Prisma queries.\n• Serverless Database: Designed Neon PostgreSQL models (Tenant, User, DocSign, assignments, templates) with a lazy Prisma Proxy singleton to avoid Vercel build-time connection locks.\n• Signing Workflow: Dispatches token-protected invitation emails via Resend and completes the document lifecycle from assignment through signed/completed status.",
+            link: "https://github.com/ammar-tahir012/signforge",
+            github: "https://github.com/ammar-tahir012/signforge",
+            live: "https://signforge-virid.vercel.app/"
+        },
+        {
+            id: 9,
+            title: "Talento — Voice-First AI Applicant Tracking System",
+            category: "AI / HR Platform",
+            technologies: "Next.js 16, TypeScript, Google Gemini 2.5 Flash, pdfjs-dist, Web Speech API, Tailwind CSS v4",
+            image: "/images/talento/Landing.jpeg",
+            images: [
+                "/images/talento/Landing.jpeg",
+                "/images/talento/HR_INTEFRACE.jpeg",
+                "/images/talento/DETAIL_VIEWS.jpeg",
+                "/images/talento/INTERVIEW_QUESTIONS.jpeg",
+                "/images/talento/GITHUB_EXPLORATION.jpeg",
+                "/images/talento/OUTREACH.jpeg",
+                "/images/talento/DRAFT_MAILS.jpeg"
+            ],
+            description: "Type: Voice-First AI ATS Platform\n\nCore Technical Architecture:\n• Client-Side Bulk PDF Ingestion: Parses 30+ candidate CVs locally with pdfjs-dist Web Workers and annotation hyperlink extractors, with no server-side file upload.\n• Multi-Lingual Voice Co-Pilot: Integrated Web Speech API STT/TTS with English and Urdu (ur-PK) models so recruiters can dictate job criteria hands-free.\n• Ranking Pipeline: Compresses resume text and routes requests through a 16-key Gemini 2.5 Flash load balancer with automatic failover, returning ATS scores, experience estimates, pros/cons, and ranked leaderboard output.\n• Interview Kit Generator: Produces 5 candidate-specific technical and behavioral questions targeting career transitions, gaps, and past roles.\n• GitHub Health & Outreach: Scores repository quality, commit consistency, and claimed open-source work, then drafts batch email outreach via mailto: and clipboard formatting.",
+            link: "https://github.com/ammar-tahir012/talento",
+            github: "https://github.com/ammar-tahir012/talento",
+            live: "https://talento-snowy.vercel.app/"
+        },
+        {
             id: 1,
             title: "MuteMate — AI-Powered Sign Language Learning App",
             category: "AI / Mobile",
