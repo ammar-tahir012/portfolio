@@ -16,9 +16,10 @@ interface LoadingType {
 export const LoadingContext = createContext<LoadingType | null>(null);
 
 export const LoadingProvider = ({ children }: PropsWithChildren) => {
+  // The loading progress is driven by the 3D character, which only mounts above
+  // 1024px. Below that there is nothing to report progress, so skip the loader.
   const [isLoading, setIsLoading] = useState(() => {
-    // Skip loading on mobile
-    if (window.innerWidth <= 768) return false;
+    if (window.innerWidth <= 1024) return false;
     return true;
   });
   const [loading, setLoading] = useState(0);
@@ -29,8 +30,9 @@ export const LoadingProvider = ({ children }: PropsWithChildren) => {
     setLoading,
   };
   useEffect(() => {
-    // Auto-start animations on mobile since there's no 3D model
-    if (window.innerWidth <= 768) {
+    // Auto-start animations when there's no 3D model, otherwise initialFX never
+    // runs and the page stays scroll-locked.
+    if (window.innerWidth <= 1024) {
       import("../components/utils/initialFX").then((module) => {
         if (module.initialFX) {
           setTimeout(() => {

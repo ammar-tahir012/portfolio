@@ -3,6 +3,24 @@ import { DRACOLoader, GLTF, GLTFLoader } from "three-stdlib";
 import { setCharTimeline, setAllTimeline } from "../../utils/GsapScroll";
 import { decryptFile } from "./decrypt";
 
+const characterColors: Record<string, string> = {
+  hair: "#0e4034",
+  // Node names lose their dots when GLTFLoader sanitizes them.
+  BODYSHIRT: "#0f6b4c",
+};
+
+// Several meshes (shirt, hands, neck) share one material, so it is cloned
+// before recolouring to avoid tinting the skin along with the clothes.
+const recolorCharacter = (character: THREE.Object3D) => {
+  Object.entries(characterColors).forEach(([nodeName, color]) => {
+    const node = character.getObjectByName(nodeName) as THREE.Mesh | null;
+    if (!node?.isMesh || Array.isArray(node.material)) return;
+    const material = (node.material as THREE.MeshStandardMaterial).clone();
+    material.color.set(color);
+    node.material = material;
+  });
+};
+
 const setCharacter = (
   renderer: THREE.WebGLRenderer,
   scene: THREE.Scene,
@@ -39,6 +57,7 @@ const setCharacter = (
                 }
               }
             });
+            recolorCharacter(character);
             resolve(gltf);
             setCharTimeline(character, camera);
             setAllTimeline();

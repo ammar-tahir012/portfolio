@@ -77,7 +77,7 @@
 
 .what-noTouch:hover,
 .what-content-active {
-  background: rgba(34, 25, 42, 0.85);
+  background: rgba(16, 40, 33, 0.85);
   transform: translateY(-4px);
 }
 

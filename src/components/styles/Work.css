@@ -1,5 +1,6 @@
 .work-section h2 {
-  margin-top: 100px;
+  margin-top: 16px;
+  margin-bottom: 12px;
   font-size: 70px;
   font-weight: 500;
 }
@@ -107,8 +108,8 @@
 }
 
 .work-btn-visit:hover {
-  background: #d4bcff;
-  box-shadow: 0 4px 15px rgba(194, 164, 255, 0.4);
+  background: #7ff0c4;
+  box-shadow: 0 4px 15px rgba(47, 191, 143, 0.4);
   transform: translateY(-2deg);
 }
 
@@ -253,8 +254,8 @@
 
   .work-section h2 {
     font-size: 60px;
-    margin-bottom: 30px;
-    margin-top: 70px;
+    margin-bottom: 16px;
+    margin-top: 16px;
   }
 }
 
@@ -379,7 +380,7 @@
 
 .see-all-btn:hover {
   transform: scale(1.05);
-  box-shadow: 0 10px 30px rgba(194, 164, 255, 0.4);
+  box-shadow: 0 10px 30px rgba(47, 191, 143, 0.4);
 }
 
 /* Mobile: Stack work items vertically when GSAP pinning is disabled */

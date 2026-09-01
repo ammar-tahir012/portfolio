@@ -3,7 +3,7 @@ export const config = {
         name: "Ammar",
         fullName: "Ammar Tahir",
         title: "Full Stack Developer",
-        description: "Full Stack Developer with hands-on experience building production-grade web and mobile applications. Currently delivering transformative software solutions across AI, web, mobile, and cloud computing."
+        description: "Full Stack Developer with hands-on experience building production-grade SaaS platforms, web applications, and mobile apps. Currently engineering a multi-module SaaS platform at macroGEN."
     },
     social: {
         github: "ammar-tahir012",
@@ -13,15 +13,27 @@ export const config = {
     },
     about: {
         title: "About Me",
-        description: "I am a Full Stack Developer building production-grade web, mobile, and AI-powered applications. Currently at Escalo AI, I specialize in combining modern web architecture with intelligent systems from real-time computer vision models to cloud-hosted enterprise platforms. Computer Science Graduate from COMSATS University."
+        description: "Full Stack Developer with hands-on experience building production-grade SaaS platforms, web applications, and mobile apps. Currently engineering a multi-module SaaS platform at macroGEN, combining inventory, job, task, and payroll management for the New Zealand market. Previously built multi-tenant SaaS platforms at Escalo AI. Completed a web development internship at PTV. BS in Computer Science, COMSATS University (CGPA 3.26)."
     },
     experiences: [
         {
             position: "Full Stack Developer",
-            company: "Escalo AI (Remote)",
-            period: "May 2026 - Present",
+            company: "macroGEN",
+            period: "Aug 2026 - Present",
             location: "Islamabad, Pakistan",
-            description: "Delivering transformative software solutions across AI, web, mobile, and cloud computing for a diverse client base.",
+            description: "Engineering a multi-module SaaS platform combining inventory, job, task, and payroll management for the New Zealand market.",
+            responsibilities: [
+                "Multi-Module SaaS Platform: Engineering a production SaaS that unifies inventory, job, task, and payroll management for the New Zealand market.",
+                "Full-Stack Delivery: Building and iterating on interconnected modules across the platform so operations, jobs, and payroll stay in one system."
+            ],
+            technologies: ["Next.js", "React.js", "TypeScript", "Node.js"]
+        },
+        {
+            position: "Full Stack Developer",
+            company: "Escalo AI (Remote)",
+            period: "Apr 2026 - Aug 2026",
+            location: "Islamabad, Pakistan",
+            description: "Built multi-tenant SaaS platforms and full-stack solutions across AI, web, mobile, and cloud for a diverse client base.",
             responsibilities: [
                 "Enterprise Dashboards & Architecture: Engineered complex, multi-role client portals (including Bizzhubz and HPA Portal) using Next.js, TypeScript, and Tailwind CSS, consolidating permissions, user workflows, and analytics into unified dashboard structures.",
                 "Full-Stack & Cloud Integration: Built scalable RESTful backend services and database models using Node.js, Supabase, and AWS S3, implementing secure authentication and file management pipelines.",
